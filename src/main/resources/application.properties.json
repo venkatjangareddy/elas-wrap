@@ -1,0 +1,92 @@
+{
+    "Demand Planning Tool": {
+        "className": "DemandPlanningTool",
+        "authorizeViaMDS": false,
+        "type": "AssetsNested",
+        "index": "assets", 
+        "nestedField": ["assetavailabilitydetails"],
+        "signatureKey": "hdiwnb83kcls8emg9w6yermq87elw2k492643mh72l28der",
+        "sessionTimeOut": "3600",
+        "aggSize": 1000,
+        "aggCount": 100,
+        "agg_separator": "-",
+        "roles":
+                {
+                    "admin": {
+                        "level": 1,
+                        "source": [],
+                        "loweredFields": "areaid:1.0,assetid:1.0,assetsubtype.lowered:1.0,businessunit.lowered:1.0,comments.lowered:1.0,componentofid:1.0,descrlong.lowered:1.0,descrshort.lowered:1.0,location.lowered:1.0,manufacturer.lowered:1.0,model.lowered:1.0,projectdescr.lowered:1.0,projectid:1.0,psamareatbldescr.lowered:1.0,psamsubtypedescr.lowered:1.0,psassetdescr.lowered:1.0,pslocationtbldescr.lowered:1.0,serialid:1.0,tagnumber.lowered:1.0",   
+                        "searchableFields": "areaid:1.0,assetid:1.0,assetsubtype.analyzed:1.0,businessunit.analyzed:1.0,comments.analyzed:1.0,componentofid:1.0,descrlong.analyzed:1.0,descrshort.analyzed:1.0,location.analyzed:1.0,manufacturer.analyzed:1.0,model.analyzed:1.0,projectdescr.analyzed:1.0,projectid:1.0,psamareatbldescr.analyzed:1.0,psamsubtypedescr.analyzed:1.0,psassetdescr.analyzed:1.0,pslocationtbldescr.analyzed:1.0,serialid:1.0,tagnumber.analyzed:1.0"
+                    },
+
+                    "user": {
+                        "level": 2,
+                        "source": [],
+                        "loweredFields": "areaid:1.0,assetid:1.0,assetsubtype.lowered:1.0,businessunit.lowered:1.0,comments.lowered:1.0,componentofid:1.0,descrlong.lowered:1.0,descrshort.lowered:1.0,location.lowered:1.0,manufacturer.lowered:1.0,model.lowered:1.0,projectdescr.lowered:1.0,projectid:1.0,psamareatbldescr.lowered:1.0,psamsubtypedescr.lowered:1.0,psassetdescr.lowered:1.0,pslocationtbldescr.lowered:1.0,serialid:1.0,tagnumber.lowered:1.0",   
+                        "searchableFields": "areaid:1.0,assetid:1.0,assetsubtype.analyzed:1.0,businessunit.analyzed:1.0,comments.analyzed:1.0,componentofid:1.0,descrlong.analyzed:1.0,descrshort.analyzed:1.0,location.analyzed:1.0,manufacturer.analyzed:1.0,model.analyzed:1.0,projectdescr.analyzed:1.0,projectid:1.0,psamareatbldescr.analyzed:1.0,psamsubtypedescr.analyzed:1.0,psassetdescr.analyzed:1.0,pslocationtbldescr.analyzed:1.0,serialid:1.0,tagnumber.analyzed:1.0"
+                    }
+                }
+    },
+    "PeopleFinder": {
+        "className": "PeopleFinder",
+        "authorizeViaMDS": false,
+        "type": "EmployeeSearch",
+        "index": "employeesearch",
+        "signatureKey": "kdjfdjfkdfjfr48rhdjkhdfjkdf4r49dkdkfkfkfhuincmn",
+        "sessionTimeOut": "3600",
+        "aggSize": 1000,
+        "aggCount": 100,
+        "agg_separator": "-",
+        "roles":
+                {
+                    "power user": {
+                        "level": 1,
+                        "source": ["userid", "empsuffix", "employeename", "preffirstname", "empbusinesstitle", "empjobfunction", "empjobsubfuncion", "empserviceline", "empbusinessline", "emplocation", "empcity", "empcountry", "employeeemail", "empoibusnphone", "empoiispeeddial", "empaboutme", "empcommunities", "empexperiences", "empinteresthobbies", "empcountriesworked", "emptradesassociation", "empid", "empspokenlanguage", "empsubserviceline", "empfax", "empgoogleplusdetails", "emplinkedindetails", "empeducation", "emppersonalcertifications", "empstatus"],
+                        "loweredFields": "empaboutme.aboutme:1.0,empcommunities.keyword.lowered:1.0,empbusinesstitle.lowered:1.0,empcity.lowered:1.0,empcountriesworked.countriesworked.lowered:1.0,empcountry.lowered:1.0,empgoogleplusdetails.*:1.0,empeducation.education.lowered:1.0,empexperiences.experiences.lowered:1.0,empid.lowered:1.0,empinteresthobbies.*:1.0,empjobfunction.lowered:1.0,empjobsubfuncion.lowered:1.0,emplocation.lowered:1.0,employeeemail.lowered:1.0,employeename.lowered:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.lowered:1.0,empserviceline.lowered:1.0,empspokenlanguage.lowered:1.0,empstatus.lowered:1.0,empsubserviceline.lowered:1.0,emptradesassociation.*:1.0,preffirstname.lowered:1.0",   
+                        "searchableFields": "empaboutme.aboutme:1.0,empcommunities.keyword.analyzed:1.0,empbusinesstitle.analyzed:1.0,empcity.analyzed:1.0,empcountriesworked.countriesworked.analyzed:1.0,empcountry.analyzed:1.0,empgoogleplusdetails.*:1.0,empeducation.education.analyzed:1.0,empexperiences.experiences.analyzed:1.0,empid.analyzed:1.0,empinteresthobbies.*:1.0,empjobfunction.analyzed:1.0,empjobsubfuncion.analyzed:1.0,emplocation.analyzed:1.0,employeeemail.analyzed:1.0,employeename.analyzed:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.analyzed:1.0,empserviceline.analyzed:1.0,empspokenlanguage.analyzed:1.0,empstatus.analyzed:1.0,empsubserviceline.analyzed:1.0,emptradesassociation.*:1.0,preffirstname.analyzed:1.0"  
+                    },
+                    "admin": {
+                        "level": 2,
+                        "source": ["userid", "empsuffix", "employeename", "preffirstname", "empbusinesstitle", "empjobfunction", "empjobsubfuncion", "empserviceline", "empbusinessline", "emplocation", "empcity", "empcountry", "employeeemail", "empoibusnphone", "empoiispeeddial", "empaboutme", "empcommunities", "empexperiences", "empinteresthobbies", "empcountriesworked", "emptradesassociation", "empid", "empspokenlanguage", "empsubserviceline", "empfax", "empgoogleplusdetails", "emplinkedindetails", "empeducation", "emppersonalcertifications", "empstatus"],
+                        "loweredFields": "empaboutme.aboutme:1.0,empcommunities.keyword.lowered:1.0,empbusinesstitle.lowered:1.0,empcity.lowered:1.0,empcountriesworked.countriesworked.lowered:1.0,empcountry.lowered:1.0,empgoogleplusdetails.*:1.0,empeducation.education.lowered:1.0,empexperiences.experiences.lowered:1.0,empid.lowered:1.0,empinteresthobbies.*:1.0,empjobfunction.lowered:1.0,empjobsubfuncion.lowered:1.0,emplocation.lowered:1.0,employeeemail.lowered:1.0,employeename.lowered:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.lowered:1.0,empserviceline.lowered:1.0,empspokenlanguage.lowered:1.0,empstatus.lowered:1.0,empsubserviceline.lowered:1.0,emptradesassociation.*:1.0,preffirstname.lowered:1.0",   
+                        "searchableFields": "empaboutme.aboutme:1.0,empcommunities.keyword.analyzed:1.0,empbusinesstitle.analyzed:1.0,empcity.analyzed:1.0,empcountriesworked.countriesworked.analyzed:1.0,empcountry.analyzed:1.0,empgoogleplusdetails.*:1.0,empeducation.education.analyzed:1.0,empexperiences.experiences.analyzed:1.0,empid.analyzed:1.0,empinteresthobbies.*:1.0,empjobfunction.analyzed:1.0,empjobsubfuncion.analyzed:1.0,emplocation.analyzed:1.0,employeeemail.analyzed:1.0,employeename.analyzed:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.analyzed:1.0,empserviceline.analyzed:1.0,empspokenlanguage.analyzed:1.0,empstatus.analyzed:1.0,empsubserviceline.analyzed:1.0,emptradesassociation.*:1.0,preffirstname.analyzed:1.0"  
+                    },
+                    "mobile user": {
+                        "level": 3,
+                        "source": ["userid", "empsuffix", "employeename", "preffirstname", "empimage", "empbusinesstitle", "empjobfunction", "empjobsubfuncion", "empserviceline", "empbusinessline", "emplocation", "empcity", "empcountry", "employeeemail", "empoibusnphone", "empoiispeeddial", "empaboutme", "empcommunities", "empexperiences", "empinteresthobbies", "empcountriesworked", "emptradesassociation", "empid", "empspokenlanguage", "empsubserviceline", "empfax", "empgoogleplusdetails", "emplinkedindetails", "empeducation", "emppersonalcertifications", "empstatus"],
+                        "loweredFields": "empaboutme.aboutme:1.0,empcommunities.keyword.lowered:1.0,empbusinesstitle.lowered:1.0,empcity.lowered:1.0,empcountriesworked.countriesworked.lowered:1.0,empcountry.lowered:1.0,empgoogleplusdetails.*:1.0,empeducation.education.lowered:1.0,empexperiences.experiences.lowered:1.0,empid.lowered:1.0,empinteresthobbies.*:1.0,empjobfunction.lowered:1.0,empjobsubfuncion.lowered:1.0,emplocation.lowered:1.0,employeeemail.lowered:1.0,employeename.lowered:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.lowered:1.0,empserviceline.lowered:1.0,empspokenlanguage.lowered:1.0,empstatus.lowered:1.0,empsubserviceline.lowered:1.0,emptradesassociation.*:1.0,preffirstname.lowered:1.0",   
+                        "searchableFields": "empaboutme.aboutme:1.0,empcommunities.keyword.analyzed:1.0,empbusinesstitle.analyzed:1.0,empcity.analyzed:1.0,empcountriesworked.countriesworked.analyzed:1.0,empcountry.analyzed:1.0,empgoogleplusdetails.*:1.0,empeducation.education.analyzed:1.0,empexperiences.experiences.analyzed:1.0,empid.analyzed:1.0,empinteresthobbies.*:1.0,empjobfunction.analyzed:1.0,empjobsubfuncion.analyzed:1.0,emplocation.analyzed:1.0,employeeemail.analyzed:1.0,employeename.analyzed:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.analyzed:1.0,empserviceline.analyzed:1.0,empspokenlanguage.analyzed:1.0,empstatus.analyzed:1.0,empsubserviceline.analyzed:1.0,emptradesassociation.*:1.0,preffirstname.analyzed:1.0"  
+                    }
+                }
+    },
+    "Employee Search": {
+        "className": "EmployeeSearch",
+        "authorizeViaMDS": true,
+        "type": "EmployeeSearch",
+        "index": "employeesearch",
+        "signatureKey": "mncxmveuryejjhdjh467gf785gdhfgdhffjgfjgjdjdggjdj",
+        "sessionTimeOut": "3600",
+        "aggSize": 1000,
+        "agg_separator": "-",
+        "roles":
+                {
+                    "admin": {
+                        "level": 1,
+                        "source": [],
+                        "loweredFields": "empaboutme.aboutme:1.0,empcommunities.keyword.lowered:1.0,empbusinesstitle.lowered:1.0,empcity.lowered:1.0,empcountriesworked.countriesworked.lowered:1.0,empcountry.lowered:1.0,empgoogleplusdetails.*:1.0,empeducation.education.lowered:1.0,empexperiences.experiences.lowered:1.0,empid.lowered:1.0,empinteresthobbies.*:1.0,empjobfunction.lowered:1.0,empjobsubfuncion.lowered:1.0,emplocation.lowered:1.0,employeeemail.lowered:1.0,employeename.lowered:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.lowered:1.0,empserviceline.lowered:1.0,empspokenlanguage.lowered:1.0,empstatus.lowered:1.0,empsubserviceline.lowered:1.0,emptradesassociation.*:1.0,preffirstname.lowered:1.0",   
+                        "searchableFields": "empaboutme.aboutme:1.0,empcommunities.keyword.analyzed:1.0,empbusinesstitle.analyzed:1.0,empcity.analyzed:1.0,empcountriesworked.countriesworked.analyzed:1.0,empcountry.analyzed:1.0,empgoogleplusdetails.*:1.0,empeducation.education.analyzed:1.0,empexperiences.experiences.analyzed:1.0,empid.analyzed:1.0,empinteresthobbies.*:1.0,empjobfunction.analyzed:1.0,empjobsubfuncion.analyzed:1.0,emplocation.analyzed:1.0,employeeemail.analyzed:1.0,employeename.analyzed:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.analyzed:1.0,empserviceline.analyzed:1.0,empspokenlanguage.analyzed:1.0,empstatus.analyzed:1.0,empsubserviceline.analyzed:1.0,emptradesassociation.*:1.0,preffirstname.analyzed:1.0"  
+                    },
+
+                    "user": {
+                        "level": 2,
+                        "source": [],
+                        "loweredFields": "empaboutme.aboutme:1.0,empcommunities.keyword.lowered:1.0,empbusinesstitle.lowered:1.0,empcity.lowered:1.0,empcountriesworked.countriesworked.lowered:1.0,empcountry.lowered:1.0,empgoogleplusdetails.*:1.0,empeducation.education.lowered:1.0,empexperiences.experiences.lowered:1.0,empid.lowered:1.0,empinteresthobbies.*:1.0,empjobfunction.lowered:1.0,empjobsubfuncion.lowered:1.0,emplocation.lowered:1.0,employeeemail.lowered:1.0,employeename.lowered:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.lowered:1.0,empserviceline.lowered:1.0,empspokenlanguage.lowered:1.0,empstatus.lowered:1.0,empsubserviceline.lowered:1.0,emptradesassociation.*:1.0,preffirstname.lowered:1.0",   
+                        "searchableFields": "empaboutme.aboutme:1.0,empcommunities.keyword.analyzed:1.0,empbusinesstitle.analyzed:1.0,empcity.analyzed:1.0,empcountriesworked.countriesworked.analyzed:1.0,empcountry.analyzed:1.0,empgoogleplusdetails.*:1.0,empeducation.education.analyzed:1.0,empexperiences.experiences.analyzed:1.0,empid.analyzed:1.0,empinteresthobbies.*:1.0,empjobfunction.analyzed:1.0,empjobsubfuncion.analyzed:1.0,emplocation.analyzed:1.0,employeeemail.analyzed:1.0,employeename.analyzed:1.0,emplinkedindetails.*:1.0,emppersonalcertifications.analyzed:1.0,empserviceline.analyzed:1.0,empspokenlanguage.analyzed:1.0,empstatus.analyzed:1.0,empsubserviceline.analyzed:1.0,emptradesassociation.*:1.0,preffirstname.analyzed:1.0"  
+                    }
+                }
+    },
+    "JWT Expiry": {
+        "type": "doc",
+        "index": "jwttokens"
+    }
+}

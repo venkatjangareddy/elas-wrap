@@ -1,0 +1,22 @@
+{
+    "101": "Requested body is not valid.",
+    "102": "App name is mendatory.",
+    "103": "search_keyword is required.",
+    "104": "Invalid App Name",
+    "105": "Mandatory field access_token in JSON request",
+    "106": "User is not authorized",
+    "107": "user roles is not valid.",
+    "108": "Error occured during request validation",
+    "109": "Exception parsing JSON request",
+    "110": "make filter query on request is invalid.",
+    "111": "user is not allowed to access the field",
+    "112": "Internal Server Error.",    
+    "113": "Invalid Aggs Type provided.",
+    "114": "Access Token expired.",
+    "115": "Malformed token.",
+    "116": "Something went wrong during token validation.",
+    "117": "Request body is required.",
+    "118": "key 'roles' cannot be used in context of external application",
+    "119": "Invalid Update request JSON. 'Id' is required for updting nested field. ",
+    "120": "Invalid Role provided from application"
+}

@@ -1,0 +1,1134 @@
+{
+    "oiicustomers": {
+        "settings": {},
+        "mappings": {
+            "type": "doc",
+            "mapping": {
+                "_source": {
+                    "enabled": true
+                },
+                "properties": {
+                    "parentclientid": {
+                        "type": "keyword"
+                    },
+                    "clientid": {
+                        "type": "keyword"
+                    }
+                }
+            }
+        }
+    },
+    "jwttokens": {
+        "mappings": {
+            "type": "doc",
+            "mapping": {
+                "_source": {
+                    "enabled": true
+                },
+                "properties": {
+                    "expiry": {
+                        "type": "date",
+                        "format": "yyyy/MM/dd HH:mm:ss Z"
+                    }
+                }
+            }
+        }
+    },
+    "assets": {
+        "settings": {
+            "analysis": {
+                "normalizer": {
+                    "custom_keyword": {
+                        "type": "custom",
+                        "filter": ["lowercase"]
+                    }
+                },
+                "analyzer": {
+                    "custom_search_5gram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "5gram_tokenizer",
+                        "filter": ["lowercase"],
+                        "char_filter": ["html_strip", "escape_quote"]
+                    },
+                    "custom_search_edgegram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "edge_ngram",
+                        "filter": ["lowercase"],
+                        "char_filter": ["html_strip", "escape_quote"]
+                    }
+                },
+                "char_filter": {
+                    "escape_quote": {
+                        "type": "mapping",
+                        "mappings": [
+                            "\" => \\\""
+                        ]
+                    }
+                },
+                "tokenizer": {
+                    "5gram_tokenizer": {
+                        "type": "ngram",
+                        "min_gram": 3,
+                        "max_gram": 5,
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation"
+                        ]
+                    },
+                    "edgegram_tokenizer": {
+                        "type": "edge_ngram",
+                        "min_gram": 2,
+                        "max_gram": 7,
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation"
+                        ]
+                    }
+                }
+            },
+            "index": {
+                "max_inner_result_window": 1000
+            }
+        },
+        "mappings": {
+            "type": "Assets",
+            "mapping": {
+                "_source": {
+                    "enabled": true
+                },
+                "dynamic": false,
+                "properties": {
+                    "areaid": {
+                        "type": "keyword"
+                    },
+                    "checkoutid": {
+                        "type": "keyword"
+                    },
+                    "comments": {
+                        "type": "text"
+                    },
+                    "startdate": {
+                        "type": "date",
+                        "format": "strict_date_optional_time"
+                    },
+                    "enddate": {
+                        "type": "date",
+                        "format": "strict_date_optional_time"
+                    },
+                    "serialid": {
+                        "type": "keyword"
+                    },
+                    "assetid": {
+                        "type": "keyword"
+                    },
+                    "projectid": {
+                        "type": "keyword"
+                    },
+                    "tagnumber": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "location": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "assetscheckinandoutdetails": {
+                        "type": "nested",
+                        "properties": {
+                            "checkedin": {
+                                "type": "text"
+                            },
+                            "projectdescr": {
+                                "type": "text"
+                            },
+                            "checkoutid": {
+                                "type": "keyword"
+                            },
+                            "startdate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "enddate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "projectid": {
+                                "type": "keyword"
+                            },
+                            "woid": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "assetavailabilitydetails": {
+                        "type": "nested",
+                        "properties": {
+                            "startdate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "enddate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            }
+                        }
+                    },
+                    "assetworkorderdetails": {
+                        "type": "nested",
+                        "properties": {
+                            "checkoutid": {
+                                "type": "keyword"
+                            },
+                            "woid": {
+                                "type": "keyword"
+                            },
+                            "startdate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "enddate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "wotype": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "licensedetails": {
+                        "type": "nested",
+                        "properties": {
+                            "oiamcertid": {
+                                "type": "keyword"
+                            },
+                            "agencyid": {
+                                "type": "keyword"
+                            },
+                            "licstartdt": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+
+                            "expirydays": {
+                                "type": "keyword"
+                            },
+                            "licenddt": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "renewaldt": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            }
+                        }
+                    },
+                    "componentofid": {
+                        "type": "keyword"
+                    },
+                    "psassetdescr": {
+                        "type": "text"
+                    },
+                    "psamsubtypedescr": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "lastupdated": {
+                        "type": "long"
+                    },
+                    "psamareatbldescr": {
+                        "type": "text"
+                    },
+                    "descrshort": {
+                        "type": "text"
+                    },
+                    "descrlong": {
+                        "type": "text"
+                    },
+                    "businessunit": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "assetsubtype": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "projectdescr": {
+                        "type": "text",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "manufacturer": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "model": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "pslocationtbldescr": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "employeesearch": {
+        "settings": {
+            "analysis": {
+                "normalizer": {
+                    "custom_keyword": {
+                        "type": "custom",
+                        "filter": ["lowercase"]
+                    }
+                },
+                "analyzer": {
+                    "custom_search_5gram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "5gram_tokenizer",
+                        "filter": ["lowercase"],
+                        "char_filter": ["html_strip", "escape_quote"]
+                    },
+                    "custom_search_edgegram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "edge_ngram",
+                        "filter": ["lowercase"],
+                        "char_filter": ["html_strip", "escape_quote"]
+                    }
+                },
+                "char_filter": {
+                    "escape_quote": {
+                        "type": "mapping",
+                        "mappings": [
+                            "\" => \\\""
+                        ]
+                    }
+                },
+                "tokenizer": {
+                    "5gram_tokenizer": {
+                        "type": "ngram",
+                        "min_gram": 3,
+                        "max_gram": 5,
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation"
+                        ]
+                    },
+                    "edgegram_tokenizer": {
+                        "type": "edge_ngram",
+                        "min_gram": 2,
+                        "max_gram": 7,
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation"
+                        ]
+                    }
+                }
+            },
+            "index": {
+                "max_inner_result_window": 1000
+            }
+        },
+        "mappings": {
+            "type": "EmployeeSearch",
+            "mapping": {
+                "_source": {
+                    "enabled": true
+                },
+                "dynamic": false,
+                "properties": {
+                    "businessunit": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "department": {
+                        "type": "keyword",                        
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empaboutme": {
+                        "properties": {
+                            "aboutme": {
+                                "type": "text"
+                            },
+                            "aboutmehasorder": {
+                                "type": "integer"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empbusinessline": {
+                        "type": "text",
+                        "index": false
+                    },
+                    "empfax": {
+                        "type": "text",
+                        "index": false
+                    },
+                    "empoibusnphone": {
+                        "type": "text",
+                        "index": false
+                    },
+                    "emppersonalphone": {
+                        "type": "text",
+                        "index": false
+                    },
+                    "empoiispeeddial": {
+                        "type": "text",
+                        "index": false
+                    },
+                    "region": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "supervisiordesignation": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "supervisoremail": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "supervisorid": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "supervisorname": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "userid": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "totalexperience": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "lastupdated": {
+                        "type": "long"
+                    },
+                    "empserviceline": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empsubserviceline": {
+                        "type": "keyword",                        
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "hasempimage": {
+                        "type": "keyword"
+                    },
+                    "preffirstname": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empimage": {
+                        "type": "keyword",
+                        "index": false
+                    },
+                    "empsupimage": {
+                        "type": "keyword",
+                        "index": false
+                    },
+                    "hassupimage": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empstatus": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "oceexperience": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empspokenlanguage": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empcity": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empbusinesstitle": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empcountry": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empofficetype": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empid": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "hiredate": {
+                        "type": "date",
+                        "format": "strict_date_optional_time"
+                    },
+                    "phone": {
+                        "type": "keyword"
+                    },
+                    "empjobfunction": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "emptype": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empjobsubfuncion": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "employeeemail": {
+                        "type": "keyword",
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "empdesignation": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "employeename": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "emplocation": {
+                        "type": "keyword",
+
+                        "fields": {
+                            "analyzed": {
+                                "type": "text"
+                            },
+                            "lowered": {
+                                "type": "keyword",
+                                "normalizer": "custom_keyword"
+                            }
+                        }
+                    },
+                    "emptraining": {
+                        "type": "nested",
+                        "properties": {
+                            "completiondate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "expirationdate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "trainingname": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "emptradesassociation": {
+                        "properties": {
+                            "tradesassociation": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "tradesassociationhasorder": {
+                                "type": "keyword"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empinteresthobbies": {
+                        "properties": {
+                            "interesthobbies": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "interesthobbieshasorder": {
+                                "type": "keyword"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "emplinkedindetails": {
+                        "properties": {
+                            "emplinkedin": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "emplinkedinhasorder": {
+                                "type": "keyword"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empgoogleplusdetails": {
+                        "properties": {
+                            "empgoogleplus": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "empgoogleplushasorder": {
+                                "type": "keyword"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "emppersonalcertifications": {
+                        "properties": {
+                            "educertification": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empcurrentprojects": {
+                        "properties": {
+                            "currentproject": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "emppastprojects": {
+                        "properties": {
+                            "pastproject": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "empdiscipline": {
+                        "properties": {
+                            "disciplinecode": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "discipline": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "empeducation": {
+                        "properties": {
+                            "id": {
+                                "type": "keyword"
+                            },
+                            "educationhasorder": {
+                                "type": "keyword"
+                            },
+                            "education": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "empexperiences": {
+                        "properties": {
+                            "id": {
+                                "type": "keyword"
+                            },
+                            "experienceshasorder": {
+                                "type": "keyword"
+                            },
+                            "experiences": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "empcommunities": {
+                        "properties": {
+                            "keyword": {
+                                "type": "text",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "empyplinks": {
+                                "type": "keyword",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "text"
+                            },
+                            "communitieshasorder": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empcountriesworked": {
+                        "properties": {
+                            "countriesworked": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "id": {
+                                "type": "text",
+                                "index": false
+                            },
+                            "countriesworkedhasorder": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "empcertificates": {
+                        "type": "nested",
+                        "properties": {
+                            "completiondate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "expirationdate": {
+                                "type": "date",
+                                "format": "strict_date_optional_time"
+                            },
+                            "id": {
+                                "type": "text",
+                                "index": false
+                            },
+                            "certificationname": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "empskillset": {
+                        "type": "nested",
+                        "properties": {
+                            "skillset": {
+                                "type": "keyword",
+
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "text"
+                                    },
+                                    "lowered": {
+                                        "type": "keyword",
+                                        "normalizer": "custom_keyword"
+                                    }
+                                }
+                            },
+                            "skillsetcode": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}
+
